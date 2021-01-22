@@ -1,0 +1,44 @@
+@import "~@angular/material/theming";
+
+.navbar {
+  height: 75px;
+  width: 100%;
+  background-color: #3f51b5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  .img-container {
+    width: 200px;
+    height: 100%;
+  }
+  .img {
+    height: 100%;
+  }
+  .user-menu {
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .user-menu-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    span {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    mat-icon {
+      width: 34px;
+      height: 34px;
+      font-size: 34px;
+    }
+  }
+}
+.shopping_cart {
+  color: white;
+}
