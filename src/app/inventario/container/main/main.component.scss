@@ -4,26 +4,52 @@
 }
 
 .row-selected {
-  background-color: rgba(0,0,0,.12);
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .actions {
+  margin-bottom: 16px;
   button {
     margin-right: 8px;
   }
-  margin-bottom: 16px;
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    button {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
 }
 .filters {
   display: flex;
-}
-.filter-actions {
-  margin-left: 16px;
-  button {
-    margin-right: 8px;
+  .filter-actions {
+    margin-left: 16px;
+    button {
+      margin-right: 8px;
+    }
   }
-}
-.input-list {
-  mat-form-field {
-    margin-right: 8px;
+  .input-list {
+    mat-form-field {
+      margin-right: 8px;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    .filter-actions {
+      width: 100%;
+      margin: 0;
+      button {
+        display: block;
+        margin: 0;
+        width: 100%;
+        margin-bottom: 8px;
+      }
+    }
+    .input-list {
+      width: 100%;
+      mat-form-field {
+        width: 100%;
+      }
+    }
   }
 }

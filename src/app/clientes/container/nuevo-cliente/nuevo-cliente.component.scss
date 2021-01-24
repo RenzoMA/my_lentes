@@ -10,9 +10,6 @@
   padding-bottom: 20px;
 }
 
-.actions {
-  padding-top: 20px;
-}
 
 .input-list {
   display: flex;
@@ -28,5 +25,12 @@
   justify-content: flex-end;
   button {
     margin-left: 8px;
+  }
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    button {
+      width: 100%;
+      margin-top: 8px;
+    }
   }
 }
