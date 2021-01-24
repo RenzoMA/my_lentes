@@ -1,0 +1,78 @@
+<div class="nuevo-cliente mat-elevation-z8">
+  <div class="section-container">
+    <h2>Datos Personales</h2>
+    <mat-form-field>
+      <mat-label>Codigo</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tipo doc identidad</mat-label>
+      <mat-select>
+        <mat-option> Activo </mat-option>
+        <mat-option> Inactivo </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Telefono</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nombre Completo</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Doc Identidad</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Correo</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Dirección</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Canal Principal</mat-label>
+      <mat-select>
+        <mat-option> Activo </mat-option>
+        <mat-option> Inactivo </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha cumpleaños</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enlace RRSS 2</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enlace RRSS 1</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+  </div>
+  <div class="section-container">
+    <h2>Datos Comerciales</h2>
+    <mat-form-field>
+      <mat-label>Categoria</mat-label>
+      <mat-select>
+        <mat-option> Activo </mat-option>
+        <mat-option> Inactivo </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tipo de cliente</mat-label>
+      <mat-select>
+        <mat-option> Activo </mat-option>
+        <mat-option> Inactivo </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <button mat-flat-button (click)="cancel($event)">Cancelar</button>
+  <button mat-raised-button color="primary">Borrar</button>
+  <button mat-raised-button color="primary">Guardar</button>
+</div>

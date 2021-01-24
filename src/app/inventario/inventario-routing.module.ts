@@ -1,12 +1,17 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { MainComponent } from './container/main/main.component';
+import { MainComponent } from "./container/main/main.component";
+import { NuevoProductoComponent } from "./container/nuevo-producto/nuevo-producto.component";
 
 const routes: Routes = [
   {
     path: "",
     component: MainComponent,
-  }
+  },
+  {
+    path: "nuevo",
+    component: NuevoProductoComponent,
+  },
 ];
 
 @NgModule({
