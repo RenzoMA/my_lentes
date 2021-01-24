@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
@@ -7,13 +7,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent implements OnInit {
-  @Input() itemQuantity = 0;
-  constructor(private router: Router) {}
+  @Output() menuClick: EventEmitter<void> = new EventEmitter<void>();
+  constructor() {}
 
   ngOnInit(): void {}
-
-  toProfile(event: MouseEvent) {
-    event.preventDefault();
-    this.router.navigate(["auth/profile"]);
-  }
 }

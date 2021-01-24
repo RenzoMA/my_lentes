@@ -1,4 +1,27 @@
-<app-navbar [itemQuantity]="myCartCount | async"></app-navbar>
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
+<mat-drawer-container class="mat-drawer-container">
+  <mat-drawer #drawer mode="over">
+    <img
+      src="https://asunoliver.com/wp-content/uploads/2016/05/kyme-gafas-logo.jpg"
+    />
+    <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option routerLink="/ventas" (click)="drawer.toggle()">
+        Ventas</mat-list-option
+      >
+      <mat-list-option routerLink="/inventario" (click)="drawer.toggle()">
+        Inventario
+      </mat-list-option>
+      <mat-list-option routerLink="/clientes" (click)="drawer.toggle()">
+        Clientes
+      </mat-list-option>
+      <mat-list-option routerLink="/reportes" (click)="drawer.toggle()">
+        Reportes
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+  <div>
+    <app-navbar (menuClick)="drawer.toggle()"></app-navbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>

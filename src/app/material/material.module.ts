@@ -13,6 +13,9 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSelectModule } from "@angular/material/select";
 import { MatBadgeModule } from "@angular/material/badge";
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -32,6 +35,9 @@ import { MatBadgeModule } from "@angular/material/badge";
     MatInputModule,
     MatCheckboxModule,
     MatBadgeModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   exports: [
     MatButtonModule,
@@ -50,6 +56,9 @@ import { MatBadgeModule } from "@angular/material/badge";
     MatInputModule,
     MatCheckboxModule,
     MatBadgeModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
 })
 export class MaterialModule {}
