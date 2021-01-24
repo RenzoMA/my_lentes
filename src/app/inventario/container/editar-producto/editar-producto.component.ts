@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { Location } from '@angular/common';
 
 @Component({
-  selector: "app-nuevo-producto",
-  templateUrl: "./nuevo-producto.component.html",
-  styleUrls: ["./nuevo-producto.component.scss"],
+  selector: "app-editar-producto",
+  templateUrl: "./editar-producto.component.html",
+  styleUrls: ["./editar-producto.component.scss"],
 })
-export class NuevoProductoComponent implements OnInit {
+export class EditarProductoComponent implements OnInit {
   constructor(private location: Location) {}
 
   ngOnInit(): void {}

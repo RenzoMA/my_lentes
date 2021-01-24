@@ -54,6 +54,7 @@
       <input type="text" matInput />
     </mat-form-field>
   </div>
+  <mat-divider></mat-divider>
   <div class="section-container">
     <h2>Datos Comerciales</h2>
     <mat-form-field>
@@ -71,8 +72,10 @@
       </mat-select>
     </mat-form-field>
   </div>
-
-  <button mat-flat-button (click)="cancel($event)">Cancelar</button>
-  <button mat-raised-button color="primary">Borrar</button>
-  <button mat-raised-button color="primary">Guardar</button>
+  <mat-divider></mat-divider>
+  <div class="actions">
+    <button mat-flat-button (click)="cancel($event)">Cancelar</button>
+    <button mat-raised-button color="primary">Borrar</button>
+    <button mat-raised-button color="primary">Guardar</button>
+  </div>
 </div>

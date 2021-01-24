@@ -4,11 +4,12 @@ import { MainComponent } from './container/main/main.component';
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { NuevoProductoComponent } from './container/nuevo-producto/nuevo-producto.component';
+import { EditarProductoComponent } from './container/editar-producto/editar-producto.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent, NuevoProductoComponent],
+  declarations: [MainComponent, NuevoProductoComponent, EditarProductoComponent],
   imports: [
     CommonModule,
     InventarioRoutingModule,
