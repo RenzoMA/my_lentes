@@ -1,3 +1,27 @@
 .tabla-clientes {
   width: 100%;
+  margin-top: 16px;
+}
+.row-selected {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+.actions {
+  button {
+    margin-right: 8px;
+  }
+  margin-bottom: 16px;
+}
+.filters {
+  display: flex;
+}
+.filter-actions {
+  margin-left: 16px;
+  button {
+    margin-right: 8px;
+  }
+}
+.input-list {
+  mat-form-field {
+    margin-right: 8px;
+  }
 }

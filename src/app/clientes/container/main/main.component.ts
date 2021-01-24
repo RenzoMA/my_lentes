@@ -9,7 +9,36 @@ export interface Cliente {
   canal: string;
 }
 
-const ELEMENT_DATA: Cliente[] = [];
+const ELEMENT_DATA: Cliente[] = [
+  {
+    codigo: "1",
+    tipo: "test",
+    canal: "canal",
+    categoria: "category",
+    nombre: "my name",
+  },
+  {
+    codigo: "2",
+    tipo: "test",
+    canal: "canal",
+    categoria: "category",
+    nombre: "my name",
+  },
+  {
+    codigo: "3",
+    tipo: "test",
+    canal: "canal",
+    categoria: "category",
+    nombre: "my name",
+  },
+  {
+    codigo: "4",
+    tipo: "test",
+    canal: "canal",
+    categoria: "category",
+    nombre: "my name",
+  },
+];
 
 @Component({
   selector: "app-main",
@@ -17,6 +46,7 @@ const ELEMENT_DATA: Cliente[] = [];
   styleUrls: ["./main.component.scss"],
 })
 export class MainComponent implements OnInit {
+  selectedId = "";
   displayedColumns: string[] = [
     "codigo",
     "nombre",
@@ -31,5 +61,15 @@ export class MainComponent implements OnInit {
 
   nuevoCliente(event: MouseEvent) {
     this.router.navigate(["nuevo"], { relativeTo: this.route });
+  }
+  updateSelected(row: Cliente) {
+    if (this.selectedId === row.codigo) {
+      this.selectedId = "";
+    } else {
+      this.selectedId = row.codigo;
+    }
+  }
+  modificarCliente(event: MouseEvent) {
+    this.router.navigate(["editar", this.selectedId], {relativeTo: this.route});
   }
 }
