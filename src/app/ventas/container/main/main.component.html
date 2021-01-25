@@ -1,7 +1,10 @@
 <div class="actions">
-    <button mat-raised-button color="primary" (click)="nuevaVenta($event)">Nueva Venta</button>
-    <button mat-raised-button color="primary" [disabled]="!selectedId" (click)="modificarVenta($event)">Modificar Venta</button>
-    <button mat-raised-button color="primary" [disabled]="!selectedId">Anular Venta</button>
+    <button mat-raised-button color="primary" (click)="nuevaVenta($event)"><mat-icon>
+      add_shopping_cart</mat-icon>Nueva Venta</button>
+    <button mat-raised-button color="accent" [disabled]="!selectedId" (click)="modificarVenta($event)"><mat-icon>
+      update</mat-icon>Modificar Venta</button>
+    <button mat-raised-button color="warn" [disabled]="!selectedId"><mat-icon>
+      remove_shopping_cart</mat-icon>Anular Venta</button>
   </div>
   <div>Filtrar Ventas:</div>
   <div class="filters">
@@ -15,38 +18,38 @@
             <input type="text" matInput />
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Fecha desde</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Fecha hasta</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Estado</mat-label>
-            <mat-select>
-            <mat-option> Pagado </mat-option>
-            <mat-option> Entregado </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Canal</mat-label>
-            <mat-select>
-            <mat-option> Facebook </mat-option>
-            <mat-option> Instagram </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    
-    <div class="filter-actions">
-        <button mat-raised-button color="primary">Filtrar</button>
-        <button mat-raised-button color="primary">Borrar</button>
+        <mat-label>Fecha desde</mat-label>
+        <input matInput [matDatepicker]="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha hasta</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <mat-select>
+          <mat-option> Pagado </mat-option>
+          <mat-option> Entregado </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Canal</mat-label>
+        <mat-select>
+          <mat-option> Facebook </mat-option>
+          <mat-option> Instagram </mat-option>
+        </mat-select>
+    </mat-form-field>
     </div>
   </div>
+    <div class="filter-actions">
+        <button mat-raised-button color="primary"><mat-icon>search</mat-icon>Filtrar</button>
+        <button mat-raised-button color="warn"><mat-icon>delete</mat-icon>Borrar</button>
+    </div>
+  
   <div>Últimas ventas:</div>
   <div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tabla-ventas">

@@ -10,7 +10,6 @@
   margin-bottom: 16px;
   button {
     margin-right: 8px;
-   
   }
   @media screen and (max-width: 600px) {
     flex-wrap: wrap;
@@ -20,7 +19,19 @@
     }
   }
 }
-
+.filter-actions {
+  button {
+    margin-right: 8px;
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    button {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  }
+}
 .filters {
   display: flex;
   .filter-actions {
@@ -42,6 +53,12 @@
       button {
         display: block;
         margin: 0;
+        width: 100%;
+        margin-bottom: 8px;
+      }
+    }
+    .filter-actions {
+      button {
         width: 100%;
         margin-bottom: 8px;
       }
