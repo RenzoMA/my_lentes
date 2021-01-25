@@ -1,4 +1,4 @@
-<div class="nuevo-cliente mat-elevation-z8">
+<div class="nueva-venta mat-elevation-z8">
     <div class="section-container">
       <h2>Registrar nueva venta</h2>
       <div class="input-list">
@@ -26,12 +26,9 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        
-        <mat-divider></mat-divider>
-     
         <div>
             <h2>Productos</h2>
-          <div class="input-list">
+          <div>
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tabla-productos">
                 <ng-container matColumnDef="codigo">
                   <th mat-header-cell *matHeaderCellDef>Código</th>
@@ -72,14 +69,12 @@
                 <tr
                   mat-row
                   *matRowDef="let row; columns: displayedColumns"
-                  (click)="updateSelected(row)"
                   [ngClass]="{ 'row-selected': selectedId === row.codigo }"
                 ></tr>
-              </table>
+            </table>
            </div>
         </div>
-
-        <div class="">
+        <div>
             <mat-form-field>
                 <mat-label>Canal de venta</mat-label>
                 <mat-select>
@@ -107,16 +102,12 @@
                 <input type="text" matInput />
               </mat-form-field>
         </div>
-        
-        
       </div>
     </div>
-    
-    <mat-divider></mat-divider>
+
     <div class="actions">
       <button mat-flat-button (click)="cancel($event)">Cancelar</button>
       <button mat-raised-button color="primary">Borrar</button>
       <button mat-raised-button color="primary">Guardar</button>
     </div>
-  </div>
-  
+</div>

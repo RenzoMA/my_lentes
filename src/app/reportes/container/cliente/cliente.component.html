@@ -1,0 +1,27 @@
+<div class="busca-cliente mat-elevation-z8">
+    <div class="section-container">
+      <h2>Reporte de ventas por fecha</h2>
+      <div class="input-list">
+        <mat-form-field>
+          <mat-label>Fecha desde</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Fecha hasta</mat-label>
+            <input matInput [matDatepicker]="picker" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <div class="actions">
+      <button mat-flat-button (click)="cancel($event)">Cancelar</button>
+      <button mat-raised-button color="primary">Borrar</button>
+      <button mat-raised-button color="primary">Generar</button>
+    </div>
+  </div>
+  
