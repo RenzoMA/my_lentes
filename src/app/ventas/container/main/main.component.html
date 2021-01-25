@@ -16,15 +16,15 @@
         </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Fecha desde</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Fecha hasta</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Estado</mat-label>
@@ -41,7 +41,7 @@
         </mat-select>
     </mat-form-field>
     </div>
-    
+
     <div class="filter-actions">
         <button mat-raised-button color="primary">Filtrar</button>
         <button mat-raised-button color="primary">Borrar</button>
