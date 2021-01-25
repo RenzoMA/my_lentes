@@ -1,11 +1,20 @@
 <mat-toolbar color="primary">
-  <button
-        (click)="menuClick.emit()"
-        mat-icon-button
-        class="example-icon"
-      >
+  <div class="navbar-wrapper" *ngIf="isLoggedIn">
+    <div class="navbar-left">
+      <button (click)="menuClick.emit()" mat-icon-button class="example-icon">
         <mat-icon>menu</mat-icon>
       </button>
 
-  <span>MOSHIN</span>
+      <span>MOSHIN</span>
+    </div>
+    <div class="navbar-right">
+      <button mat-button color="inherit" [matMenuTriggerFor]="menu">
+        <span class="username">{{ userName }}</span>
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="cerrarSession.emit()">Cerrar Sesión</button>
+  </mat-menu>
 </mat-toolbar>

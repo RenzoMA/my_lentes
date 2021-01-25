@@ -8,7 +8,11 @@ import { Router } from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
   @Output() menuClick: EventEmitter<void> = new EventEmitter<void>();
+  @Input() userName: string;
+  @Input() isLoggedIn: boolean = false;
+  @Output() cerrarSession: EventEmitter<void> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
+
 }
