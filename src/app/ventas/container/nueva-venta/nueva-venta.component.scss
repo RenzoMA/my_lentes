@@ -1,0 +1,33 @@
+.nueva-venta{
+    padding: 20px;
+  }
+  
+  .section-container:not(:first-child) {
+    padding-top: 20px;
+  }
+  
+  .section-container {
+    padding-bottom: 20px;
+  }
+  
+  .actions {
+    padding-top: 20px;
+  }
+  
+  .input-list {
+    display: flex;
+    flex-wrap: wrap;
+    mat-form-field {
+      margin-right: 20px;
+      width: 300px;
+    }
+  }
+  .actions {
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      margin-left: 8px;
+    }
+  }
+  
