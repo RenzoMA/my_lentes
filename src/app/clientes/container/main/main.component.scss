@@ -24,6 +24,8 @@
   display: flex;
   .filter-actions {
     margin-left: 16px;
+    display: flex;
+    align-items: center;
     button {
       margin-right: 8px;
     }
@@ -38,6 +40,7 @@
     .filter-actions {
       width: 100%;
       margin: 0;
+      display: block;
       button {
         display: block;
         margin: 0;
