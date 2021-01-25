@@ -74,5 +74,7 @@ export class NuevaVentaComponent implements OnInit {
   cancel(event: MouseEvent) {
     this.location.back();
   }
+
+  updateSelected(row: NuevaVenta) {}
 }
 
