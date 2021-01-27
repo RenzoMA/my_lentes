@@ -6,15 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
-import { NuevoProductoComponent } from './producto/container/nuevo-producto/nuevo-producto.component';
-import { EditarProductoComponent } from './producto/container/editar-producto/editar-producto.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NuevoProductoComponent,
-    EditarProductoComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
