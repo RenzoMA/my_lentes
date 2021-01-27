@@ -1,6 +1,10 @@
 .tabla-productos {
+  min-width: 700px;
   width: 100%;
   margin-top: 16px;
+}
+.table-wrapper {
+  overflow-x: auto;
 }
 
 .row-selected {

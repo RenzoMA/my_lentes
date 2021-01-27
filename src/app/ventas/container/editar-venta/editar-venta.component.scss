@@ -1,41 +1,43 @@
 .editar-venta {
-    padding: 20px;
+  padding: 20px;
+}
+.tabla-venta {
+  min-width: 700px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+.section-container:not(:first-child) {
+  padding-top: 20px;
+}
+
+.section-container {
+  padding-bottom: 20px;
+}
+
+.input-list {
+  display: flex;
+  flex-wrap: wrap;
+  mat-form-field {
+    margin-right: 20px;
+    width: 300px;
   }
-  .tabla-venta {
-    width: 100%;
-    margin-top: 16px;
+}
+.actions {
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  button {
+    margin-left: 8px;
   }
-  
-  .section-container:not(:first-child) {
-    padding-top: 20px;
-  }
-  
-  .section-container {
-    padding-bottom: 20px;
-  }
-  
-  
-  .input-list {
-    display: flex;
+  @media screen and (max-width: 600px) {
     flex-wrap: wrap;
-    mat-form-field {
-      margin-right: 20px;
-      width: 300px;
-    }
-  }
-  .actions {
-    padding-top: 20px;
-    display: flex;
-    justify-content: flex-end;
     button {
-      margin-left: 8px;
-    }
-    @media screen and (max-width: 600px) {
-      flex-wrap: wrap;
-      button {
-        width: 100%;
-        margin-top: 8px;
-      }
+      width: 100%;
+      margin-top: 8px;
     }
   }
-  
+}

@@ -1,6 +1,10 @@
 .tabla-ventas {
-  width: 100%;
   margin-top: 16px;
+  min-width: 700px;
+  width: 100%;
+}
+.table-wrapper {
+  overflow-x: auto;
 }
 .row-selected {
   background-color: rgba(0, 0, 0, 0.12);
@@ -72,4 +76,3 @@
   }
 }
 
-  

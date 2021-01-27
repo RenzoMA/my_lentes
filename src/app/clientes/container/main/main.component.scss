@@ -1,6 +1,10 @@
 .tabla-clientes {
-  width: 100%;
+  min-width: 700px;
   margin-top: 16px;
+  width: 100%;
+}
+.table-wrapper {
+  overflow-x: auto;
 }
 .row-selected {
   background-color: rgba(0, 0, 0, 0.12);
