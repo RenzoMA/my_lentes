@@ -9,11 +9,12 @@ import { SharedModule } from './shared/shared.module';
 import { NuevoProductoComponent } from './producto/container/nuevo-producto/nuevo-producto.component';
 import { EditarProductoComponent } from './producto/container/editar-producto/editar-producto.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NuevoProductoComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
   ],
   imports: [
     BrowserModule,

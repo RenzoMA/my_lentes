@@ -37,6 +37,11 @@ const routes: Routes = [
     loadChildren: () => import("./home/home.module").then((m) => m.HomeModule),
   },
   {
+    path: "usuario",
+    canActivate: [SessionGuardGuard],
+    loadChildren: () => import("./usuario/usuario.module").then((m) => m.UsuarioModule),
+  },
+  {
     path: "",
     pathMatch: "full",
     redirectTo: "home",

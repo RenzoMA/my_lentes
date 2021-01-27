@@ -1,7 +1,7 @@
 <mat-drawer-container class="mat-drawer-container">
   <mat-drawer #drawer mode="over">
     <img
-      src="https://asunoliver.com/wp-content/uploads/2016/05/kyme-gafas-logo.jpg"
+      src="./assets/img/logo/logo_marca1.png"
     />
     <mat-selection-list #shoes [multiple]="false">
       <mat-list-option routerLink="/ventas" (click)="drawer.toggle()">
@@ -15,6 +15,9 @@
       </mat-list-option>
       <mat-list-option routerLink="/reportes" (click)="drawer.toggle()">
         Reportes
+      </mat-list-option>
+      <mat-list-option routerLink="/usuario" (click)="drawer.toggle()">
+        Usuario
       </mat-list-option>
     </mat-selection-list>
   </mat-drawer>
