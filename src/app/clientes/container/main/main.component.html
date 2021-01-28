@@ -1,9 +1,12 @@
 <div class="actions">
-  <button mat-raised-button color="primary" (click)="nuevoCliente($event)">
+  <button mat-raised-button color="primary" (click)="nuevoCliente($event)"><mat-icon>
+    group_add</mat-icon>
     Nuevo Cliente
   </button>
-  <button mat-raised-button color="primary" [disabled]="!selectedId" (click)="modificarCliente($event)">Modificar Cliente</button>
-  <button mat-raised-button color="primary" [disabled]="!selectedId">Eliminar Cliente</button>
+  <button mat-raised-button color="accent" [disabled]="!selectedId" (click)="modificarCliente($event)"><mat-icon>
+    supervised_user_circle</mat-icon>Modificar Cliente</button>
+  <button mat-raised-button color="warn" [disabled]="!selectedId"><mat-icon>
+    person_remove</mat-icon>Eliminar Cliente</button>
 </div>
 <div>Filtar Clientes:</div>
 <div class="filters">
@@ -25,8 +28,8 @@
     </mat-form-field>
   </div>
   <div class="filter-actions">
-    <button mat-raised-button color="primary">Filtrar</button>
-    <button mat-raised-button color="primary">Borrar</button>
+    <button mat-raised-button color="primary"><mat-icon>search</mat-icon>Filtrar</button>
+    <button mat-raised-button color="warn"><mat-icon>clear</mat-icon>Borrar</button>
   </div>
 </div>
 <div>Ultimas ventas:</div>
@@ -70,3 +73,7 @@
     ></tr>
   </table>
 </div>
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

@@ -13,6 +13,11 @@
 button{
   width: 120%;
 }
+.form-container{
+	margin-left: -2rem;
+}
+
+
 .box {
 	position: relative;
 	top: 0;
@@ -29,7 +34,6 @@ button{
   max-width: 330px;
   box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 6);
   margin-top: 2rem;
-  margin-left: 3rem;
 }
 
 .box.back {
@@ -91,4 +95,7 @@ button{
 
 .main-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
 	padding: 0.8375em 0;
+}
+mat-form-field {
+	width: 120%;
 }

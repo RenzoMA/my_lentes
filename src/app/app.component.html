@@ -4,6 +4,9 @@
       src="./assets/img/logo/logo_marca1.png"
     />
     <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option routerLink="/home" (click)="drawer.toggle()">
+        Inicio</mat-list-option
+      >
       <mat-list-option routerLink="/ventas" (click)="drawer.toggle()">
         Ventas</mat-list-option
       >

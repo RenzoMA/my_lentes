@@ -47,7 +47,7 @@
   </div>
     <div class="filter-actions">
         <button mat-raised-button color="primary"><mat-icon>search</mat-icon>Filtrar</button>
-        <button mat-raised-button color="warn"><mat-icon>delete</mat-icon>Borrar</button>
+        <button mat-raised-button color="warn"><mat-icon>clear</mat-icon>Borrar</button>
     </div>
 
   <div>Últimas ventas:</div>
@@ -97,5 +97,9 @@
     ></tr>
   </table>
   </div>
+  <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
 
 
