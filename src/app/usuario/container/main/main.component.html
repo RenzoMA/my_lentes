@@ -1,5 +1,9 @@
 <div class="actions">
     <button mat-raised-button color="primary" (click)="nuevoUsuario($event)"><mat-icon>person_add</mat-icon>Nueva Usuario</button>
+    <button mat-raised-button color="accent" [disabled]="!selectedId" (click)="modificarUsuario($event)"><mat-icon>
+      update</mat-icon>Modificar Usuario</button>
+    <button mat-raised-button color="warn" [disabled]="!selectedId"><mat-icon>
+      person_off</mat-icon>Eliminar Usuario</button>
   </div>
   <div>Filtrar Usuarios:</div>
   <div class="filters">
@@ -59,6 +63,7 @@
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"
+      (click)="updateSelected(row)"
       [ngClass]="{ 'row-selected': selectedId === row.codigo }"
     ></tr>
   </table>

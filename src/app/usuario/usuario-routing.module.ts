@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { MainComponent } from "./container/main/main.component";
 import { NuevoUsuarioComponent } from "./container/nuevo-usuario/nuevo-usuario.component";
+import { EditarUsuarioComponent } from './container/editar-usuario/editar-usuario.component';
+
 const routes: Routes = [
   {
     path: "",
@@ -11,6 +13,10 @@ const routes: Routes = [
   {
     path: "nuevo",
     component: NuevoUsuarioComponent,
+  },
+  {
+    path: "editar/:id",
+    component: EditarUsuarioComponent,
   },
 ];
 

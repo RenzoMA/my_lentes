@@ -1,0 +1,75 @@
+<div class="editar-usuario mat-elevation-z8">
+    <div class="section-container">
+      <h2>Editar Usuario</h2>
+      <div class="input-list">
+        <mat-form-field>
+          <mat-label>Codigo</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tipo doc identidad</mat-label>
+          <mat-select>
+            <mat-option> Activo </mat-option>
+            <mat-option> Inactivo </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Telefono</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nombre Completo</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Doc Identidad</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Correo</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Fecha cumpleaños</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Cargo</mat-label>
+          <mat-select>
+            <mat-option> Activo </mat-option>
+            <mat-option> Inactivo </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="section-container">
+      <h2>Datos de sistema</h2>
+      <div class="input-list">
+        <mat-form-field>
+          <mat-label>Perfil</mat-label>
+          <mat-select>
+            <mat-option> Activo </mat-option>
+            <mat-option> Inactivo </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirmar contraseña</mat-label>
+          <input type="text" matInput />
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="actions">
+      <button mat-flat-button (click)="cancel($event)">Cancelar</button>
+      <button mat-raised-button color="warn"><mat-icon>delete</mat-icon>Borrar</button>
+      <button mat-raised-button color="primary"><mat-icon>save</mat-icon>Guardar</button>
+    </div>
+  </div>
+  

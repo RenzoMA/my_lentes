@@ -74,4 +74,14 @@ export class MainComponent implements OnInit {
   nuevoUsuario(event: MouseEvent) {
     this.router.navigate(["nuevo"], { relativeTo: this.route });
   }
+  updateSelected(row: Usuario) {
+    if (this.selectedId === row.codigo) {
+      this.selectedId = "";
+    } else {
+      this.selectedId = row.codigo;
+    }
+  }
+  modificarUsuario(event: MouseEvent) {
+    this.router.navigate(["editar", this.selectedId], {relativeTo: this.route});
+  }
 }
