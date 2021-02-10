@@ -1,5 +1,5 @@
 .nosotros-item-container {
-  width:100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -12,5 +12,8 @@
       object-fit: cover;
       width: 100%;
     }
+  }
+  .detail {
+    padding: 20px;
   }
 }

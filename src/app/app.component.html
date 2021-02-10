@@ -1,11 +1,12 @@
 <mat-drawer-container class="mat-drawer-container">
   <mat-drawer #drawer mode="over">
-    <img
-      src="./assets/img/logo/logo_marca1.png"
-    />
+    <img src="./assets/img/logo/logo_marca1.png" />
     <mat-selection-list #shoes [multiple]="false">
       <mat-list-option routerLink="/home" (click)="drawer.toggle()">
         Inicio</mat-list-option
+      >
+      <mat-list-option routerLink="/catalog" (click)="drawer.toggle()">
+        Catalogo</mat-list-option
       >
       <mat-list-option routerLink="/ventas" (click)="drawer.toggle()">
         Ventas</mat-list-option
@@ -25,7 +26,12 @@
     </mat-selection-list>
   </mat-drawer>
   <div>
-    <app-navbar (menuClick)="drawer.toggle()" [userName]="getUserName()" (cerrarSession)="cerrarSession()" [isLoggedIn]="getIsLoggedIn()"></app-navbar>
+    <app-navbar
+      (menuClick)="drawer.toggle()"
+      [userName]="getUserName()"
+      (cerrarSession)="cerrarSession()"
+      [isLoggedIn]="getIsLoggedIn()"
+    ></app-navbar>
     <div class="content">
       <router-outlet></router-outlet>
     </div>
