@@ -1,0 +1,19 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  .product {
+    width: calc((100% / 4) - (2 * 10px));
+    margin: 10px;
+    @media screen and (max-width: 1200px) {
+      width: calc((100% / 3) - (2 * 10px));
+    }
+    @media screen and (max-width: 800px) {
+      width: calc((100% / 2) - (2 * 10px));
+    }
+    @media screen and (max-width: 600px) {
+      width: calc((100% / 1) - (2 * 10px));
+    }
+
+  }
+}

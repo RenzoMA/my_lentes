@@ -4,6 +4,10 @@ import { SessionGuardGuard } from './session-guard.guard';
 
 const routes: Routes = [
   {
+    path: "catalog",
+    loadChildren: () => import("./catalog/catalog.module").then((m) => m.CatalogModule),
+  },
+  {
     path: "auth",
     loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
@@ -44,7 +48,7 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "home",
+    redirectTo: "catalog",
   },
 ];
 

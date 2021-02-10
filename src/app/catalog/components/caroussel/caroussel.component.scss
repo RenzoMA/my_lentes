@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: block;
+  @include mat-elevation(8);
+}
+
+.img {
+  max-height: 500px;
+  object-fit: cover;
+  object-position: 0 30%;
+}
