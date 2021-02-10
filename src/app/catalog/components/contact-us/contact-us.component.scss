@@ -10,6 +10,7 @@
 
 .text-fields {
   display: flex;
+  flex-wrap: wrap;
   mat-form-field {
     flex: 1;
     margin: 0 20px;
