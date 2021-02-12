@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Agregar producto</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Codigo</mat-label>
+    <input type="text" matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Descripcion</mat-label>
+    <input type="text" matInput disabled />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Cantidad</mat-label>
+    <input type="number" matInput (keypress)="onKeyPress($event)"/>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="producto" cdkFocusInitial>Agregar</button>
+</div>
