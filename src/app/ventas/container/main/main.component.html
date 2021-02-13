@@ -2,44 +2,48 @@
   <button mat-raised-button color="primary" (click)="nuevaVenta($event)">
     <mat-icon> add_shopping_cart</mat-icon>Nueva Venta
   </button>
-  <button mat-raised-button color="warn" [disabled]="!selectedId" (click)="anularVenta()">
+  <button
+    mat-raised-button
+    color="warn"
+    [disabled]="!selectedId"
+    (click)="anularVenta()"
+  >
     <mat-icon> remove_shopping_cart</mat-icon>Anular Venta
   </button>
 </div>
 <div>Filtrar Ventas:</div>
-<div class="filters">
+<form class="filters" [formGroup]="filterGroup">
   <div class="input-list">
     <mat-form-field>
       <mat-label>Nombre cliente</mat-label>
-      <input type="text" matInput />
+      <input type="text" matInput formControlName="nombreCliente" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Documento</mat-label>
-      <input type="text" matInput />
+      <input type="text" matInput formControlName="documento" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Fecha desde</mat-label>
-      <input matInput [matDatepicker]="picker1" />
+      <input matInput [matDatepicker]="picker1" formControlName="inicio" />
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Fecha hasta</mat-label>
-      <input matInput [matDatepicker]="picker2" />
+      <input matInput [matDatepicker]="picker2" formControlName="fin" />
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Estado</mat-label>
-      <mat-select>
-        <mat-option> Pagado </mat-option>
-        <mat-option> Enviado </mat-option>
-        <mat-option> Entregado </mat-option>
+      <mat-select formControlName="estado">
+        <mat-option [value]="0"> Anulada </mat-option>
+        <mat-option [value]="1"> Ingresada </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Canal</mat-label>
-      <mat-select>
+      <mat-select formControlName="canal">
         <mat-option
           *ngFor="let option of canales$ | async"
           [value]="option.codigo"
@@ -49,9 +53,9 @@
       </mat-select>
     </mat-form-field>
   </div>
-</div>
+</form>
 <div class="filter-actions">
-  <button mat-raised-button color="primary">
+  <button mat-raised-button color="primary" (click)="search()">
     <mat-icon>search</mat-icon>Filtrar
   </button>
   <button mat-raised-button color="warn">

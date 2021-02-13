@@ -35,7 +35,10 @@ export class VentaService {
     private httpClient: HttpClient,
     @Inject(APP_CONFIG) private config: any
   ) {}
-
+  getVentaParams(params: string, inicio: Date, fin: Date) {
+    const url = `${this.config.api}/Venta/GetVentaByParams?parametros=${params}&fechaDesdeVenta=${inicio}&fechaHastaVenta=${fin}`;
+    return this.httpClient.get<Venta[]>(url);
+  }
   getVentas() {
     const url = `${this.config.api}/Venta/GetVenta`;
     return this.httpClient.get<Venta[]>(url);
