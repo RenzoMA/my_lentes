@@ -4,14 +4,14 @@ import { MainComponent } from './container/main/main.component';
 import { VentasRoutingModule } from './ventas-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { NuevaVentaComponent } from './container/nueva-venta/nueva-venta.component';
-import { EditarVentaComponent } from './container/editar-venta/editar-venta.component';
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [MainComponent, NuevaVentaComponent, EditarVentaComponent, AgregarProductoComponent],
-  imports: [CommonModule, VentasRoutingModule, MaterialModule],
-  
+  declarations: [MainComponent, NuevaVentaComponent, AgregarProductoComponent],
+  imports: [CommonModule, VentasRoutingModule, MaterialModule, ReactiveFormsModule],
+
 })
 export class VentasModule { }

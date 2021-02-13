@@ -1,72 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-
-export interface Venta {
-  codigo: string;
-  cliente: string;
-  documento: string;
-  fventa: string;
-  total: string;
-  estado: string;
-  canal: string
-}
-
-const ELEMENT_DATA: Venta[] = [
-  {
-    codigo: "1",
-    cliente: "Victor Morillo",
-    documento: "12345678",
-    fventa: "2020/12/05",
-    total: "category",
-    estado: "Entregado",
-    canal: "Facebook",
-  },
-  {
-    codigo: "2",
-    cliente: "Juan Perez",
-    documento: "12345678",
-    fventa: "2020/12/05",
-    total: "category",
-    estado: "Entregado",
-    canal: "Facebook",
-  },
-  {
-    codigo: "3",
-    cliente: "Carlos Sanchez",
-    documento: "12345678",
-    fventa: "2020/12/05",
-    total: "category",
-    estado: "Compra",
-    canal: "Facebook",
-  },
-  {
-    codigo: "4",
-    cliente: "Johana Gutierrez",
-    documento: "12345678",
-    fventa: "2020/12/05",
-    total: "category",
-    estado: "Compra",
-    canal: "Facebook",
-  },
-  {
-    codigo: "5",
-    cliente: "Jorge Valladares",
-    documento: "12345678",
-    fventa: "2020/12/05",
-    total: "category",
-    estado: "Compra",
-    canal: "Facebook",
-  },
-];
-
+import { CanalService } from "../../../services/canal.service";
+import { Observable } from "rxjs";
+import { Canal } from "../../../models/canal.model";
+import { VentaService } from "../../../services/venta.service";
+import { Venta } from "../../../models/venta.model";
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: "app-main",
+  templateUrl: "./main.component.html",
+  styleUrls: ["./main.component.scss"],
 })
 export class MainComponent implements OnInit {
-  selectedId = "";
+  selectedId = 0;
   displayedColumns: string[] = [
     "codigo",
     "cliente",
@@ -76,23 +22,50 @@ export class MainComponent implements OnInit {
     "estado",
     "canal",
   ];
-  dataSource = ELEMENT_DATA;
-  constructor(private router: Router, private route: ActivatedRoute) {
-   }
+  dataSource: Venta[] = [];
+  canales$: Observable<Canal[]>;
+  ventas$: Observable<Venta[]>;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private canalService: CanalService,
+    private ventaService: VentaService
+  ) {}
 
   ngOnInit(): void {
+    this.canales$ = this.canalService.getCanales();
+    this.loadVentas();
   }
+
+  loadVentas() {
+    this.ventaService.getVentas().subscribe((ventas) => {
+      this.dataSource = ventas;
+    });
+  }
+
   nuevaVenta(event: MouseEvent) {
     this.router.navigate(["nuevo"], { relativeTo: this.route });
   }
+
   updateSelected(row: Venta) {
     if (this.selectedId === row.codigo) {
-      this.selectedId = "";
+      this.selectedId = 0;
     } else {
       this.selectedId = row.codigo;
     }
   }
+
   modificarVenta(event: MouseEvent) {
-    this.router.navigate(["editar", this.selectedId], {relativeTo: this.route});
+    this.router.navigate(["editar", this.selectedId], {
+      relativeTo: this.route,
+    });
+  }
+
+  anularVenta() {
+    if (this.selectedId) {
+      this.ventaService.delete(this.selectedId).subscribe(() => {
+        this.loadVentas();
+      });
+    }
   }
 }

@@ -1,59 +1,71 @@
 <div class="actions">
-    <button mat-raised-button color="primary" (click)="nuevaVenta($event)"><mat-icon>
-      add_shopping_cart</mat-icon>Nueva Venta</button>
-    <button mat-raised-button color="accent" [disabled]="!selectedId" (click)="modificarVenta($event)"><mat-icon>
-      update</mat-icon>Modificar Venta</button>
-    <button mat-raised-button color="warn" [disabled]="!selectedId"><mat-icon>
-      remove_shopping_cart</mat-icon>Anular Venta</button>
+  <button mat-raised-button color="primary" (click)="nuevaVenta($event)">
+    <mat-icon> add_shopping_cart</mat-icon>Nueva Venta
+  </button>
+  <button mat-raised-button color="warn" [disabled]="!selectedId" (click)="anularVenta()">
+    <mat-icon> remove_shopping_cart</mat-icon>Anular Venta
+  </button>
+</div>
+<div>Filtrar Ventas:</div>
+<div class="filters">
+  <div class="input-list">
+    <mat-form-field>
+      <mat-label>Nombre cliente</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Documento</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha desde</mat-label>
+      <input matInput [matDatepicker]="picker1" />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha hasta</mat-label>
+      <input matInput [matDatepicker]="picker2" />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Estado</mat-label>
+      <mat-select>
+        <mat-option> Pagado </mat-option>
+        <mat-option> Enviado </mat-option>
+        <mat-option> Entregado </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Canal</mat-label>
+      <mat-select>
+        <mat-option
+          *ngFor="let option of canales$ | async"
+          [value]="option.codigo"
+        >
+          {{ option.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div>Filtrar Ventas:</div>
-  <div class="filters">
-    <div class="input-list">
-        <mat-form-field>
-            <mat-label>Nombre cliente</mat-label>
-            <input type="text" matInput />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Documento</mat-label>
-            <input type="text" matInput />
-        </mat-form-field>
-        <mat-form-field>
-        <mat-label>Fecha desde</mat-label>
-        <input matInput [matDatepicker]="picker1">
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Fecha hasta</mat-label>
-        <input matInput [matDatepicker]="picker2">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Estado</mat-label>
-        <mat-select>
-          <mat-option> Pagado </mat-option>
-          <mat-option> Enviado </mat-option>
-          <mat-option> Entregado </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Canal</mat-label>
-        <mat-select>
-          <mat-option> Facebook </mat-option>
-          <mat-option> Instagram </mat-option>
-        </mat-select>
-    </mat-form-field>
-    </div>
-  </div>
-    <div class="filter-actions">
-        <button mat-raised-button color="primary"><mat-icon>search</mat-icon>Filtrar</button>
-        <button mat-raised-button color="warn"><mat-icon>clear</mat-icon>Borrar</button>
-    </div>
+</div>
+<div class="filter-actions">
+  <button mat-raised-button color="primary">
+    <mat-icon>search</mat-icon>Filtrar
+  </button>
+  <button mat-raised-button color="warn">
+    <mat-icon>clear</mat-icon>Borrar
+  </button>
+</div>
 
-  <div>Últimas ventas:</div>
-  <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tabla-ventas">
+<div>Últimas ventas:</div>
+<div class="table-wrapper">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 tabla-ventas"
+  >
     <ng-container matColumnDef="codigo">
       <th mat-header-cell *matHeaderCellDef>Código</th>
       <td mat-cell *matCellDef="let element">{{ element.codigo }}</td>
@@ -71,7 +83,7 @@
 
     <ng-container matColumnDef="fventa">
       <th mat-header-cell *matHeaderCellDef>Fecha Venta</th>
-      <td mat-cell *matCellDef="let element">{{ element.fventa }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.fecha | date }}</td>
     </ng-container>
 
     <ng-container matColumnDef="total">
@@ -81,7 +93,9 @@
 
     <ng-container matColumnDef="estado">
       <th mat-header-cell *matHeaderCellDef>Estado</th>
-      <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.estado === 0 ? "Anulada" : "Ingresada" }}
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="canal">
@@ -97,10 +111,10 @@
       [ngClass]="{ 'row-selected': selectedId === row.codigo }"
     ></tr>
   </table>
-  </div>
-  <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
+</div>
+<mat-paginator
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+>
 </mat-paginator>
-
-
