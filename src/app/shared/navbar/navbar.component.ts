@@ -14,5 +14,10 @@ export class NavbarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
+  wasup() {
+    window.open(
+      "https://api.whatsapp.com/send/?phone=51988297192&text=Quiero+chatear+con+alguien%2C+por+favor&app_absent=0",
+      "_blank"
+    );
+  }
 }
