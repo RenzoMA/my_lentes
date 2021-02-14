@@ -35,7 +35,6 @@ export class MainComponent implements OnInit {
     private canalService: CanalService,
     private ventaService: VentaService
   ) {
-    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
     this.filterGroup = new FormGroup({
       nombreCliente: new FormControl(""),
       documento: new FormControl(""),
@@ -72,7 +71,14 @@ export class MainComponent implements OnInit {
     const fechaFin = this.filterGroup.get("fin").value;
 
     this.ventaService
-      .getVentaParams(estado, nombre, documento, canal, fechaInicio.toISOString(), fechaFin.toISOString())
+      .getVentaParams(
+        estado,
+        nombre,
+        documento,
+        canal,
+        fechaInicio ? fechaInicio.toISOString() : fechaInicio,
+        fechaFin ? fechaFin.toISOString() : fechaFin
+      )
       .subscribe((ventas) => {
         this.dataSource = ventas;
       });
