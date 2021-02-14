@@ -1,46 +1,42 @@
 <h1>Registrar Producto</h1>
 
-<div class="nuevo-producto mat-elevation-z8">
+<form [formGroup]="registrarGroup" class="nuevo-producto mat-elevation-z8">
   <div class="section-container">
     <h2>Datos de producto</h2>
     <div class="input-list">
       <mat-form-field>
         <mat-label>Código de Fabrica</mat-label>
-        <input type="text" matInput />
+        <input type="text" matInput formControlName="codigoFabrica" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Código Sunat</mat-label>
-        <input type="text" matInput />
+        <input type="text" matInput formControlName="codigoSunat" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Descripción</mat-label>
-        <input type="text" matInput />
+        <input type="text" matInput formControlName="descripcion" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Tipo</mat-label>
-        <mat-select>
-          <mat-option value="1"> Activo </mat-option>
-          <mat-option value="2"> Inactivo </mat-option>
+        <mat-select formControlName="tipo">
+          <mat-option *ngFor="let tipo of tipoProducto" [value]="tipo.codigo">
+            {{ tipo.nombre }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Descripción abreviada</mat-label>
-        <input type="text" matInput />
-      </mat-form-field>
-      <mat-form-field>
         <mat-label>Marca</mat-label>
-        <mat-select>
-          <mat-option value="1"> Activo </mat-option>
-          <mat-option value="2"> Inactivo </mat-option>
+        <mat-select formControlName="marca">
+          <mat-option [value]="1"> Activo </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Enlace RRSS 2</mat-label>
-        <input type="text" matInput />
+        <input type="text" matInput formControlName="enlaceRRSS2" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Enlace RRSS 1</mat-label>
-        <input type="text" matInput />
+        <input type="text" matInput formControlName="enlaceRRSS1" />
       </mat-form-field>
     </div>
   </div>
@@ -49,19 +45,12 @@
     <h2>Stock</h2>
     <div class="input-list">
       <mat-form-field>
-        <mat-label>Unidad de venta</mat-label>
-        <mat-select>
-          <mat-option value="1"> Activo </mat-option>
-          <mat-option value="2"> Inactivo </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
         <mat-label>Stock actual</mat-label>
-        <input matInput type="number" min="0" />
+        <input matInput type="number" min="0" formControlName="stock" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Precio Actual</mat-label>
-        <input matInput type="number" />
+        <input matInput type="number" formControlName="precio" />
         <span matPrefix>S/</span>
       </mat-form-field>
     </div>
@@ -70,8 +59,17 @@
   <div class="section-container">
     <h2>Imagen</h2>
     <div class="image-control">
-      <div class="image-container"></div>
-      <button mat-stroked-button color="primary">
+      <div class="image-container">
+        <img *ngIf="getImage()" [src]="getImage()" />
+      </div>
+      <input
+        style="display: none"
+        type="file"
+        accept="image/*"
+        (change)="onSelectFile($event)"
+        #file
+      />
+      <button mat-stroked-button color="primary" (click)="file.click()">
         <span class="upload-text">Upload image</span>
         <mat-icon>cloud_upload</mat-icon>
       </button>
@@ -80,7 +78,11 @@
   <mat-divider></mat-divider>
   <div class="actions">
     <button mat-flat-button (click)="cancel($event)">Cancelar</button>
-    <button mat-raised-button color="warn"><mat-icon>delete</mat-icon>Borrar</button>
-    <button mat-raised-button color="primary"><mat-icon>save</mat-icon>Guardar</button>
+    <button mat-raised-button color="warn" (click)="borrar()">
+      <mat-icon>delete</mat-icon>Borrar
+    </button>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="isDisabled()">
+      <mat-icon>save</mat-icon>Guardar
+    </button>
   </div>
-</div>
+</form>

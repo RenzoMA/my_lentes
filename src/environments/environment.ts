@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://app-service-web-dev.azurewebsites.net/api'
+  api: 'api',
+  imageapi: 'https://api.imgbb.com/1'
 };
 
 /*

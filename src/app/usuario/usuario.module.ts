@@ -5,9 +5,10 @@ import { UsuarioRoutingModule } from "./usuario-routing.module";
 import { MaterialModule } from "../material/material.module";
 import { NuevoUsuarioComponent } from "./container/nuevo-usuario/nuevo-usuario.component";
 import { EditarUsuarioComponent } from './container/editar-usuario/editar-usuario.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [MainComponent, NuevoUsuarioComponent, EditarUsuarioComponent],
-  imports: [CommonModule, UsuarioRoutingModule, MaterialModule],
+  imports: [CommonModule, UsuarioRoutingModule, MaterialModule, ReactiveFormsModule],
 })
 export class UsuarioModule {}

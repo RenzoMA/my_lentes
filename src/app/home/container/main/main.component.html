@@ -1,53 +1,93 @@
-
 <div class="container">
-    <div class="row">
-        <div class="col-xl-12"><h1>Bienvenido: {{username}}</h1></div>
+  <div class="row">
+    <div class="col-xl-12">
+      <h1>Bienvenido: {{ username }}</h1>
     </div>
-    <div class="row">
-        <div class="col-md-4 mx-auto">
-            <div class="card text-white bg-primary mb-3" style="max-width: 18rem; min-height: 13rem;">
-                <div class="card-header">Ventas</div>
-                <div class="card-body" style="background-image: url('./assets/img/fondo/shopping-cart.png'); margin-top: 1rem; background-repeat: no-repeat; text-align: right;">
-                  <h1 class="card-title">150</h1>
-                  <p class="card-text">Ventas finalizadas.</p>
-                </div>
-              </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div
+        class="card text-white bg-primary mb-3"
+        style="max-width: 18rem; min-height: 13rem"
+      >
+        <div class="card-header">Ventas</div>
+        <div
+          class="card-body"
+          style="
+            background-image: url('./assets/img/fondo/shopping-cart.png');
+            margin-top: 1rem;
+            background-repeat: no-repeat;
+            text-align: right;
+          "
+        >
+          <h1 class="card-title">{{ inicio.ventas }}</h1>
+          <p class="card-text">Ventas finalizadas.</p>
         </div>
-        <div class="col-md-4 mx-auto">
-            <div class="card text-white bg-info mb-3" style="max-width: 18rem; min-height: 13rem;">
-                <div class="card-header">Clientes</div>
-                <div class="card-body"  style="background-image: url('./assets/img/fondo/customer.png'); margin-top: 1rem; background-repeat: no-repeat; text-align: right;">
-                  <h1 class="card-title">230</h1>
-                  <p class="card-text">Clientes registrados.</p>
-                </div>
-              </div>
-        </div>
-        <div class="col-md-4 mx-auto">
-            <div class="card text-white bg-success mb-3" style="max-width: 18rem; min-height: 13rem;">
-                <div class="card-header">Inventario</div>
-                <div class="card-body" style="background-image: url('./assets/img/fondo/inventory.png'); margin-top: 1rem; background-repeat: no-repeat; text-align: right;">
-                  <h2 class="card-title">1700</h2>
-                  <p class="card-text">Lentes disponibles.</p>
-                </div>
-              </div>
-        </div>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 mx-auto">
-            <div class="card text-white bg-warning mb-3" style="max-width: 18rem; min-height: 13rem;">
-                <div class="card-header">Usuarios</div>
-                <div class="card-body" style="background-image: url('./assets/img/fondo/employees.png'); margin-top: 1rem; background-repeat: no-repeat; text-align: right;">
-                  <h1 class="card-title">30</h1>
-                  <p class="card-text">Usuarios registrados.</p>
-                </div>
-              </div>
+    <div class="col-md-4 mx-auto">
+      <div
+        class="card text-white bg-info mb-3"
+        style="max-width: 18rem; min-height: 13rem"
+      >
+        <div class="card-header">Clientes</div>
+        <div
+          class="card-body"
+          style="
+            background-image: url('./assets/img/fondo/customer.png');
+            margin-top: 1rem;
+            background-repeat: no-repeat;
+            text-align: right;
+          "
+        >
+          <h1 class="card-title">{{ inicio.clientes }}</h1>
+          <p class="card-text">Clientes registrados.</p>
         </div>
-        <div class="col-md-4 mx-auto">
-        </div>
-        <div class="col-md-4 mx-auto">
-            
-        </div>
+      </div>
     </div>
+    <div class="col-md-4 mx-auto">
+      <div
+        class="card text-white bg-success mb-3"
+        style="max-width: 18rem; min-height: 13rem"
+      >
+        <div class="card-header">Inventario</div>
+        <div
+          class="card-body"
+          style="
+            background-image: url('./assets/img/fondo/inventory.png');
+            margin-top: 1rem;
+            background-repeat: no-repeat;
+            text-align: right;
+          "
+        >
+          <h2 class="card-title">{{ inicio.stock }}</h2>
+          <p class="card-text">Lentes disponibles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div
+        class="card text-white bg-warning mb-3"
+        style="max-width: 18rem; min-height: 13rem"
+      >
+        <div class="card-header">Usuarios</div>
+        <div
+          class="card-body"
+          style="
+            background-image: url('./assets/img/fondo/employees.png');
+            margin-top: 1rem;
+            background-repeat: no-repeat;
+            text-align: right;
+          "
+        >
+          <h1 class="card-title">{{ inicio.usuarios }}</h1>
+          <p class="card-text">Usuarios registrados.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mx-auto"></div>
+    <div class="col-md-4 mx-auto"></div>
+  </div>
 </div>
-
-

@@ -1,14 +1,19 @@
 <div class="actions">
-  <button mat-raised-button color="primary" (click)="nuevoProducto($event)"><mat-icon>
-add_circle_outline</mat-icon>
+  <button mat-raised-button color="primary" (click)="nuevoProducto($event)">
+    <mat-icon> add_circle_outline</mat-icon>
     Nuevo Producto
   </button>
-  <button mat-raised-button color="accent" (click)="modificarProducto($event)" [disabled]="!selectedId"><mat-icon>
-    update</mat-icon>
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="modificarProducto($event)"
+    [disabled]="!selectedId"
+  >
+    <mat-icon> update</mat-icon>
     Modificar Producto
   </button>
-  <button mat-raised-button color="warn" [disabled]="!selectedId"><mat-icon>
-    delete</mat-icon>
+  <button mat-raised-button color="warn" [disabled]="!selectedId" (click)="deleteProduct()">
+    <mat-icon> delete</mat-icon>
     Eliminar Producto
   </button>
 </div>
@@ -17,23 +22,28 @@ add_circle_outline</mat-icon>
   <div class="input-list">
     <mat-form-field>
       <mat-label>Código Producto</mat-label>
-      <input type="text" matInput />
+      <input type="text" matInput [formControl]="codigo"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Descripción Producto</mat-label>
-      <input type="text" matInput />
+      <input type="text" matInput [formControl]="descripcion"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Tipo</mat-label>
-      <mat-select>
-        <mat-option> Activo </mat-option>
-        <mat-option> Inactivo </mat-option>
+      <mat-select [formControl]="tipo">
+        <mat-option *ngFor="let item of tipoProducto" [value]="item.codigo">
+          {{ item.nombre }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
   <div class="filter-actions">
-    <button mat-raised-button color="primary"><mat-icon>search</mat-icon>Filtrar</button>
-    <button mat-raised-button color="warn"><mat-icon>clear</mat-icon>Borrar</button>
+    <button mat-raised-button color="primary" (click)="search()">
+      <mat-icon>search</mat-icon>Filtrar
+    </button>
+    <button mat-raised-button color="warn" (click)="borrar()">
+      <mat-icon>clear</mat-icon>Borrar
+    </button>
   </div>
 </div>
 <div>Principales productos:</div>
@@ -77,9 +87,9 @@ add_circle_outline</mat-icon>
     ></tr>
   </table>
 </div>
-<mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
+<mat-paginator
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+>
 </mat-paginator>
-
-

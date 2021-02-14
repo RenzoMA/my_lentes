@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialogRef } from "@angular/material/dialog";
-import { Producto } from "../../inventario/container/main/main.component";
 import { NuevaVenta } from "../container/nueva-venta/nueva-venta.component";
 import { ProductoService } from "../../services/producto.service";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-agregar-producto",
@@ -13,10 +12,15 @@ import { FormControl, FormGroup } from "@angular/forms";
 export class AgregarProductoComponent implements OnInit {
   producto: NuevaVenta;
 
-  codigoControl = new FormControl("");
-  descripcionControl = new FormControl({ value: "", disabled: true });
-  cantidadControl = new FormControl(1);
-  productControl = new FormControl();
+  codigoControl = new FormControl("", [Validators.required]);
+  descripcionControl = new FormControl({ value: "", disabled: true }, [
+    Validators.required,
+  ]);
+  cantidadControl = new FormControl(1, [
+    Validators.required,
+    Validators.min(1),
+  ]);
+  productControl = new FormControl(null, [Validators.required]);
   constructor(
     public dialogRef: MatDialogRef<AgregarProductoComponent>,
     private productoService: ProductoService
@@ -53,5 +57,13 @@ export class AgregarProductoComponent implements OnInit {
           }
         });
     }
+  }
+
+  isDisabled() {
+    return (
+      this.cantidadControl.invalid ||
+      this.codigoControl.invalid ||
+      this.descripcionControl.value === ""
+    );
   }
 }

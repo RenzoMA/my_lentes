@@ -5,6 +5,7 @@ import { InventarioRoutingModule } from './inventario-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { NuevoProductoComponent } from './container/nuevo-producto/nuevo-producto.component';
 import { EditarProductoComponent } from './container/editar-producto/editar-producto.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { EditarProductoComponent } from './container/editar-producto/editar-prod
   imports: [
     CommonModule,
     InventarioRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class InventarioModule { }

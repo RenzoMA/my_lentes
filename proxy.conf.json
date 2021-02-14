@@ -1,0 +1,18 @@
+{
+  "/imageapi": {
+    "target": "https://api.imgbb.com/1",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  },
+  "/api": {
+    "target": "https://app-service-web-dev.azurewebsites.net/api",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

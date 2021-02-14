@@ -39,8 +39,8 @@ export class MainComponent implements OnInit {
     this.filterGroup = new FormGroup({
       nombreCliente: new FormControl(""),
       documento: new FormControl(""),
-      inicio: new FormControl(this.today),
-      fin: new FormControl(this.tomorrow),
+      inicio: new FormControl(),
+      fin: new FormControl(),
       estado: new FormControl(""),
       canal: new FormControl(""),
     });
@@ -52,18 +52,27 @@ export class MainComponent implements OnInit {
     this.canales$ = this.canalService.getCanales();
     this.loadVentas();
   }
-
+  borrar() {
+    this.filterGroup = new FormGroup({
+      nombreCliente: new FormControl(""),
+      documento: new FormControl(""),
+      inicio: new FormControl(),
+      fin: new FormControl(),
+      estado: new FormControl(""),
+      canal: new FormControl(""),
+    });
+  }
   loadVentas() {
-    let params = this.filterGroup.get("nombreCliente").value;
-    params += this.filterGroup.get("documento").value;
-    params += this.filterGroup.get("estado").value;
-    params += this.filterGroup.get("canal").value;
+    const nombre = this.filterGroup.get("nombreCliente").value;
+    const documento = this.filterGroup.get("documento").value;
+    const estado = this.filterGroup.get("estado").value;
+    const canal = this.filterGroup.get("canal").value;
 
-    let fechaInicio = this.filterGroup.get("inicio").value;
-    let fechaFin = this.filterGroup.get("fin").value;
+    const fechaInicio = this.filterGroup.get("inicio").value;
+    const fechaFin = this.filterGroup.get("fin").value;
 
     this.ventaService
-      .getVentaParams(params, fechaInicio, fechaFin)
+      .getVentaParams(estado, nombre, documento, canal, fechaInicio.toISOString(), fechaFin.toISOString())
       .subscribe((ventas) => {
         this.dataSource = ventas;
       });
