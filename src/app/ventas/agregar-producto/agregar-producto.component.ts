@@ -39,21 +39,21 @@ export class AgregarProductoComponent implements OnInit {
     this.producto = {
       cantidad: this.cantidadControl.value,
       codigo: +this.codigoControl.value,
-      descripcion: this.productControl.value.descripcion,
-      marca: this.productControl.value.marca,
-      punitario: 10,
-      total: this.cantidadControl.value * 10,
+      descripcion: this.productControl.value.prO_DESCRIPCION,
+      marca: this.productControl.value.maR_NOMBRE_MARCA,
+      punitario: +this.productControl.value.prO_PRECIO,
+      total: this.cantidadControl.value * +this.productControl.value.prO_PRECIO,
     };
     this.dialogRef.close(this.producto);
   }
   onKeyPressCode(event: KeyboardEvent) {
     if (event.charCode === 13) {
       this.productoService
-        .getProductos(this.codigoControl.value)
+        .getProductoDetalle(this.codigoControl.value)
         .subscribe((products) => {
-          if (products.length > 0) {
-            this.productControl.setValue(products[0]);
-            this.descripcionControl.setValue(products[0].descripcion);
+          if (products) {
+            this.productControl.setValue(products);
+            this.descripcionControl.setValue(products.prO_DESCRIPCION);
           }
         });
     }

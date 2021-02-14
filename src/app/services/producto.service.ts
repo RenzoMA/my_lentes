@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Canal } from "../models/canal.model";
 import { APP_CONFIG } from "../app.config";
 import { Cliente } from "../models/cliente.model";
-import { Producto } from "../models/producto.model";
+import { Producto, ProductoDetalle } from "../models/producto.model";
 import { TipoProducto } from "../models/tipo-producto.model";
 
 @Injectable({
@@ -18,6 +18,11 @@ export class ProductoService {
   getProductos(code: string) {
     const url = `${this.config.api}/Producto/GetProductoByParams?parametros=${code}`;
     return this.httpClient.get<Producto[]>(url);
+  }
+
+  getProductoDetalle(code: number) {
+    const url = `${this.config.api}/Producto/GetProductoByid?ID_PRODUCTO=${code}`;
+    return this.httpClient.get<ProductoDetalle>(url);
   }
 
   getTipoProducto() {
