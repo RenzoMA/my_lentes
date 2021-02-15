@@ -5,21 +5,17 @@ import { ReportesRoutingModule } from "./reportes-routing.module";
 import { MaterialModule } from "../material/material.module";
 import { VentaFechaComponent } from "./container/venta-fecha/venta-fecha.component";
 import { VentaMarcaComponent } from "./container/venta-marca/venta-marca.component";
-import { IngresoMesComponent } from "./container/ingreso-mes/ingreso-mes.component";
-import { VentaCanalComponent } from "./container/venta-canal/venta-canal.component";
-import { InventarioComponent } from "./container/inventario/inventario.component";
-import { ClienteComponent } from "./container/cliente/cliente.component";
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    MainComponent,
-    VentaFechaComponent,
-    VentaMarcaComponent,
-    IngresoMesComponent,
-    VentaCanalComponent,
-    InventarioComponent,
-    ClienteComponent,
+  declarations: [MainComponent, VentaFechaComponent, VentaMarcaComponent],
+  imports: [
+    CommonModule,
+    ReportesRoutingModule,
+    MaterialModule,
+    NgxChartsModule,
+    ReactiveFormsModule
   ],
-  imports: [CommonModule, ReportesRoutingModule, MaterialModule],
 })
 export class ReportesModule {}

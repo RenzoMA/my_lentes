@@ -9,6 +9,7 @@ import { ContactUsComponent } from "./components/contact-us/contact-us.component
 import { CatalogRoutingModule } from "./catalog-routing.module";
 import { CarouselModule } from "ngx-owl-carousel-o";
 import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { MaterialModule } from '../material/material.module';
     AboutUsComponent,
     ContactUsComponent
   ],
-  imports: [CommonModule, CatalogRoutingModule, CarouselModule, MaterialModule],
+  imports: [CommonModule, CatalogRoutingModule, CarouselModule, MaterialModule, ReactiveFormsModule],
 })
 export class CatalogModule {}

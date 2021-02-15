@@ -5,9 +5,10 @@ import { ClientesRoutingModule } from "./clientes-routing.module";
 import { MaterialModule } from '../material/material.module';
 import { NuevoClienteComponent } from './container/nuevo-cliente/nuevo-cliente.component';
 import { EditarClienteComponent } from './container/editar-cliente/editar-cliente.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [MainComponent, NuevoClienteComponent, EditarClienteComponent],
-  imports: [CommonModule, ClientesRoutingModule, MaterialModule],
+  imports: [CommonModule, ClientesRoutingModule, MaterialModule, ReactiveFormsModule],
 })
 export class ClientesModule {}

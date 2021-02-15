@@ -5,6 +5,7 @@ export interface Producto {
   marca: string;
   stock: number;
   precio: number;
+  imagen: string;
 }
 
 export interface ProductoDetalle {

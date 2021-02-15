@@ -1,13 +1,8 @@
 <h2>Productos</h2>
 <div class="products">
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
-  <app-product class="product"></app-product>
+  <app-product
+    *ngFor="let producto of products"
+    class="product"
+    [producto]="producto"
+  ></app-product>
 </div>

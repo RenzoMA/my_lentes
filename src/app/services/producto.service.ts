@@ -14,7 +14,10 @@ export class ProductoService {
     private httpClient: HttpClient,
     @Inject(APP_CONFIG) private config: any
   ) {}
-
+  getCatalog() {
+    const url = `${this.config.api}/Producto/GetProducto`;
+    return this.httpClient.get<Producto[]>(url);
+  }
   getProductos(code: string) {
     const url = `${this.config.api}/Producto/GetProductoByParams?parametros=${code}`;
     return this.httpClient.get<Producto[]>(url);

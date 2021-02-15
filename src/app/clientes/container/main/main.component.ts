@@ -1,44 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-
-export interface Cliente {
-  codigo: string;
-  nombre: string;
-  tipo: string;
-  categoria: string;
-  canal: string;
-}
-
-const ELEMENT_DATA: Cliente[] = [
-  {
-    codigo: "1",
-    tipo: "test",
-    canal: "canal",
-    categoria: "category",
-    nombre: "my name",
-  },
-  {
-    codigo: "2",
-    tipo: "test",
-    canal: "canal",
-    categoria: "category",
-    nombre: "my name",
-  },
-  {
-    codigo: "3",
-    tipo: "test",
-    canal: "canal",
-    categoria: "category",
-    nombre: "my name",
-  },
-  {
-    codigo: "4",
-    tipo: "test",
-    canal: "canal",
-    categoria: "category",
-    nombre: "my name",
-  },
-];
+import { Cliente } from "../../../models/cliente.model";
+import { ClienteService } from "../../../services/cliente.service";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-main",
@@ -46,30 +10,67 @@ const ELEMENT_DATA: Cliente[] = [
   styleUrls: ["./main.component.scss"],
 })
 export class MainComponent implements OnInit {
-  selectedId = "";
+  selectedId = 0;
   displayedColumns: string[] = [
     "codigo",
     "nombre",
     "tipo",
     "categoria",
     "canal",
+    "estado",
   ];
-  dataSource = ELEMENT_DATA;
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  dataSource: Cliente[] = [];
+  nombre = new FormControl("");
+  documento = new FormControl("");
+  estado = new FormControl("");
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private clienteService: ClienteService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadClientes();
+  }
+  search() {
+    this.loadClientes();
+  }
 
+  borrar() {
+    this.nombre.reset();
+    this.documento.reset();
+    this.estado.reset();
+  }
+  loadClientes() {
+    this.clienteService
+      .getClienteByParams(
+        this.nombre.value,
+        this.documento.value,
+        this.estado.value
+      )
+      .subscribe((clientes) => {
+        this.dataSource = clientes;
+      });
+  }
   nuevoCliente(event: MouseEvent) {
     this.router.navigate(["nuevo"], { relativeTo: this.route });
   }
   updateSelected(row: Cliente) {
     if (this.selectedId === row.codigo) {
-      this.selectedId = "";
+      this.selectedId = 0;
     } else {
       this.selectedId = row.codigo;
     }
   }
   modificarCliente(event: MouseEvent) {
-    this.router.navigate(["editar", this.selectedId], {relativeTo: this.route});
+    this.router.navigate(["editar", this.selectedId], {
+      relativeTo: this.route,
+    });
+  }
+
+  delete() {
+    this.clienteService.delete(this.selectedId).subscribe(() => {
+      this.loadClientes();
+    });
   }
 }

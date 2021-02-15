@@ -20,6 +20,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDividerModule} from '@angular/material/divider';
 import {A11yModule} from '@angular/cdk/a11y';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import {A11yModule} from '@angular/cdk/a11y';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDividerModule,
-    A11yModule
+    A11yModule,
+    MatChipsModule
   ],
   exports: [
     MatButtonModule,
@@ -72,7 +74,8 @@ import {A11yModule} from '@angular/cdk/a11y';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDividerModule,
-    A11yModule
+    A11yModule,
+    MatChipsModule
   ],
 })
 export class MaterialModule {}

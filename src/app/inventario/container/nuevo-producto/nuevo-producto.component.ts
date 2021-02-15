@@ -4,6 +4,8 @@ import { ProductoService } from "../../../services/producto.service";
 import { TipoProducto } from "../../../models/tipo-producto.model";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { UploadImageService } from "../../../services/uploadImage.service";
+import { MarcaService } from "../../../services/marca.service";
+import { Marca } from "../../../models/marca.model";
 
 @Component({
   selector: "app-nuevo-producto",
@@ -12,7 +14,7 @@ import { UploadImageService } from "../../../services/uploadImage.service";
 })
 export class NuevoProductoComponent implements OnInit {
   tipoProducto: TipoProducto[] = [];
-
+  marcas: Marca[] = [];
   registrarGroup = new FormGroup({
     codigoFabrica: new FormControl("", [Validators.required]),
     codigoSunat: new FormControl("", [Validators.required]),
@@ -29,12 +31,16 @@ export class NuevoProductoComponent implements OnInit {
   constructor(
     private location: Location,
     private productoService: ProductoService,
-    private imageService: UploadImageService
+    private imageService: UploadImageService,
+    private marcaService: MarcaService
   ) {}
 
   ngOnInit(): void {
     this.productoService.getTipoProducto().subscribe((items) => {
       this.tipoProducto = items;
+    });
+    this.marcaService.getMarcas().subscribe((items) => {
+      this.marcas = items;
     });
   }
   cancel(event: MouseEvent) {

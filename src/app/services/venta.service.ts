@@ -60,4 +60,8 @@ export class VentaService {
     const url = `${this.config.api}/Venta/DeleteVenta?ID_VENTA=${id}`;
     return this.httpClient.delete(url);
   }
+  getVentaMarcaCanal(marca: number, canal: number) {
+    const url = `${this.config.api}/Venta/GetVentaByVentaxMarcaxCanal?marca=${marca}&canal=${canal}`;
+    return this.httpClient.get<Venta[]>(url);
+  }
 }
