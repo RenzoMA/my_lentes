@@ -51,4 +51,21 @@ export class ProductoService {
     const url = `${this.config.api}/Producto/PostProducto?ID_TIPO_PRODUCTO=${tipoProducto}&ID_MARCA=${idMarca}&ID_UNIDAD_VENTA=1&PRO_CODIGO_FABRICA=${codigoFabrica}&PRO_CODIGO_SUNAT=${codigoSunat}&PRO_DESCRIPCION=${descripcion}&PRO_ENLACE_RRSS1=${enlaceRRSS1}&PRO_ENLACE_RRSS2=${enlaceRRSS2}&PRO_PRECIO=${precio}&PRO_STOCK=${stock}&PRO_IMAGEN=${imagen}`;
     return this.httpClient.post(url, {});
   }
+
+  updateProducto(
+    codigoProducto: number,
+    tipoProducto: number,
+    idMarca: number,
+    codigoFabrica: string,
+    codigoSunat: string,
+    descripcion: string,
+    enlaceRRSS1: string,
+    enlaceRRSS2: string,
+    precio: number,
+    stock: number,
+    imagen: string
+  ) {
+    const url = `${this.config.api}/Producto/PutProducto?ID_PRODUCTO=${codigoProducto}&ID_TIPO_PRODUCTO=${tipoProducto}&ID_MARCA=${idMarca}&PRO_CODIGO_FABRICA=${codigoFabrica}&PRO_CODIGO_SUNAT=${codigoSunat}&PRO_DESCRIPCION=${descripcion}&PRO_ENLACE_RRSS1=${enlaceRRSS1}&PRO_ENLACE_RRSS2=${enlaceRRSS2}&PRO_PRECIO=${precio}&PRO_STOCK=${stock}&PRO_IMAGEN=${imagen}`;
+    return this.httpClient.put(url, {});
+  }
 }

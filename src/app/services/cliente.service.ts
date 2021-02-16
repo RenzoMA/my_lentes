@@ -4,6 +4,7 @@ import { Canal } from "../models/canal.model";
 import { APP_CONFIG } from "../app.config";
 import { Cliente } from "../models/cliente.model";
 import { TipoCliente } from "../models/tipo-cliente.model";
+import { ClienteEdit } from "../models/cliente-edit.model";
 
 @Injectable({
   providedIn: "root",
@@ -60,5 +61,30 @@ export class ClienteService {
   ) {
     const url = `${this.config.api}/Cliente/PostContacto?CONTAC_NOMBRE=${nombre}&CONTAC_APELLIDO=${apellido}&CONTAC_CORREO=${correo}&CONTAC_COMENTARIO=${comentario}`;
     return this.httpClient.post(url, {});
+  }
+
+  getClienteById(id: number) {
+    const url = `${this.config.api}/Cliente/GetClienteById?idCliente=${id}`;
+    return this.httpClient.get<ClienteEdit>(url);
+  }
+
+  updateCliente(
+    idCliente: number,
+    idTipoDoc,
+    idCanal: number,
+    idCategoria: number,
+    idTipoCliente: number,
+    documento: string,
+    telefono: string,
+    nombre: string,
+    apellido: string,
+    correo: string,
+    cumpleaños: string,
+    direccion: string,
+    enlace1: string,
+    enlace2: string
+  ) {
+    const url = `${this.config.api}/Cliente/PutCliente?ID_CLIENTE=${idCliente}&ID_TIPO_DOCUMENTO=${idTipoDoc}&ID_CANAL_PRINCIPAL=${idCanal}&ID_CATEGORIA=${idCategoria}&ID_TIPO_CLIENTE=${idTipoCliente}&CLI_NU_DOCUMENTO=${documento}&CLI_NU_TELEFONO=${telefono}&CLI_NOMBRE=${nombre}&CLI_APELLIDO=${apellido}&CLI_CORREO=${correo}&CLI_CUMPLEAÑOS=${cumpleaños}&CLI_DIRECCION=${direccion}&CLI_ENLACE_RRSS1=${enlace1}&CLI_ENLACE_RRSS2=${enlace2}`;
+    return this.httpClient.put(url, {});
   }
 }

@@ -70,7 +70,6 @@ export class NuevoProductoComponent implements OnInit {
       marca,
       enlaceRRSS2,
       enlaceRRSS1,
-      unidadVenta,
       stock,
       precio,
       imageUrl,
