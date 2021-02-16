@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
+  failed: boolean = false;
   loginForm = this.fb.group({
     username: [""],
     password: [""],
@@ -23,7 +24,14 @@ export class LoginComponent implements OnInit {
   login(event: MouseEvent) {
     event.preventDefault();
     const { username, password } = this.loginForm.value;
-    this.sessionService.logIn(username.toUpperCase(), password);
-    this.router.navigate([""]);
+    this.sessionService
+      .logIn(username.toUpperCase(), password)
+      .subscribe((item) => {
+        if (item) {
+          this.router.navigate([""]);
+        } else {
+          this.failed = true;
+        }
+      });
   }
 }

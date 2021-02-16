@@ -17,8 +17,8 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const { user } = this.sessionService.getUser();
-    this.username = user;
+    const { usuario } = this.sessionService.getUser();
+    this.username = usuario;
     this.inicioService.getInicio().subscribe((item) => {
       this.inicio = item;
     });

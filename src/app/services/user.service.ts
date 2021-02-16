@@ -2,6 +2,7 @@ import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { APP_CONFIG } from "../app.config";
 import { User } from "../models/user.model";
+import { UserEdit } from "../models/user-edit.model";
 
 @Injectable({
   providedIn: "root",
@@ -17,6 +18,11 @@ export class UserService {
     return this.httpClient.get<User[]>(url);
   }
 
+  getUser(userId: number) {
+    const url = `${this.config.api}/User/GetUsuarioByid?ID_USUARIO=${userId}`;
+    return this.httpClient.get<UserEdit>(url);
+  }
+
   getUsuarioParams(nombre: string, documento: string) {
     const url = `${this.config.api}/User/GetUsuarioByParams?nombre=${nombre}&nuDocumento=${documento}`;
     return this.httpClient.get<User[]>(url);
@@ -26,7 +32,23 @@ export class UserService {
     const url = `${this.config.api}/User/Deleteusuario?ID_USUARIO=${userId}`;
     return this.httpClient.delete(url);
   }
-
+  update(
+    idUsuario: number,
+    idCargo: number,
+    idPerfil: number,
+    idTipoDoc: number,
+    documento: string,
+    telefono: string,
+    nombre: string,
+    apellido: string,
+    correo: string,
+    cumpleaños: string,
+    usuario: string,
+    contraseña: string
+  ) {
+    const url = `${this.config.api}/User/Putusuario?ID_USUARIO=${idUsuario}&ID_CARGO=${idCargo}&ID_PERFIL=${idPerfil}&ID_TIPO_DOCUMENTO=${idTipoDoc}&USU_NU_DOCUMENTO=${documento}&USU_NU_TELEFONO=${telefono}&USU_NOMBRE=${nombre}&USU_APELLIDO=${apellido}&USU_CORREO=${correo}&USU_CUMPLEAÑOS=${cumpleaños}&USU_USUARIO=${usuario}&USU_CONTRASEÑA=${contraseña}`;
+    return this.httpClient.put(url, {});
+  }
   registrar(
     idCargo: number,
     idPerfil: number,

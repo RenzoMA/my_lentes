@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 export class AppComponent {
   constructor(private sessionService: SessionService, private router: Router) {}
   getUserName() {
-    return this.sessionService.getUser()?.user || '';
+    return this.sessionService.getUser()?.usuario || "";
   }
   getIsLoggedIn() {
     return this.sessionService.isLoggedIn();
