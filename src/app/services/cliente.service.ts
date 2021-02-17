@@ -5,6 +5,8 @@ import { APP_CONFIG } from "../app.config";
 import { Cliente } from "../models/cliente.model";
 import { TipoCliente } from "../models/tipo-cliente.model";
 import { ClienteEdit } from "../models/cliente-edit.model";
+import { pluck } from "rxjs/operators";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: "root",
@@ -20,9 +22,15 @@ export class ClienteService {
     return this.httpClient.get<Cliente>(url);
   }
 
-  getClienteByParams(nombre: string, documento: string, estado: number) {
-    const url = `${this.config.api}/Cliente/GetClienteByParams?nombre=${nombre}&documento=${documento}&estado=${estado}`;
-    return this.httpClient.get<Cliente[]>(url);
+  getClienteByParams(
+    nombre: string,
+    documento: string,
+    estado: number,
+    pageNumber: number,
+    pageSize: number
+  ) {
+    const url = `${this.config.api}/Cliente/GetClienteByParams?nombre=${nombre}&documento=${documento}&estado=${estado}&PageNumber=${pageNumber}&PageSize=${pageSize}`;
+    return this.httpClient.get(url).pipe(pluck("data")) as Observable<Cliente[]>;
   }
 
   delete(clienteId: number) {

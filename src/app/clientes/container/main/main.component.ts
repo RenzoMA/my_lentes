@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Cliente } from "../../../models/cliente.model";
 import { ClienteService } from "../../../services/cliente.service";
 import { FormControl } from "@angular/forms";
+import { PageEvent } from "@angular/material/paginator";
 
 @Component({
   selector: "app-main",
@@ -23,6 +24,8 @@ export class MainComponent implements OnInit {
   nombre = new FormControl("");
   documento = new FormControl("");
   estado = new FormControl("");
+  page: number = 1;
+  pageSize: number = 10;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -41,12 +44,19 @@ export class MainComponent implements OnInit {
     this.documento.reset();
     this.estado.reset();
   }
+  pageChange(event: PageEvent) {
+    this.page = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.loadClientes();
+  }
   loadClientes() {
     this.clienteService
       .getClienteByParams(
         this.nombre.value,
         this.documento.value,
-        this.estado.value
+        this.estado.value,
+        this.page,
+        this.pageSize
       )
       .subscribe((clientes) => {
         this.dataSource = clientes;
