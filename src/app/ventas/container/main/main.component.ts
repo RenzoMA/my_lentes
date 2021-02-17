@@ -6,6 +6,7 @@ import { Canal } from "../../../models/canal.model";
 import { VentaService } from "../../../services/venta.service";
 import { Venta } from "../../../models/venta.model";
 import { FormGroup, FormControl } from "@angular/forms";
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: "app-main",
@@ -14,6 +15,8 @@ import { FormGroup, FormControl } from "@angular/forms";
 })
 export class MainComponent implements OnInit {
   selectedId = 0;
+  page: number = 1;
+  pageSize: number = 10;
   displayedColumns: string[] = [
     "codigo",
     "cliente",
@@ -51,6 +54,11 @@ export class MainComponent implements OnInit {
     this.canales$ = this.canalService.getCanales();
     this.loadVentas();
   }
+  pageChange(event: PageEvent) {
+    this.page = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.loadVentas();
+  }
   borrar() {
     this.filterGroup = new FormGroup({
       nombreCliente: new FormControl(""),
@@ -77,7 +85,9 @@ export class MainComponent implements OnInit {
         documento,
         canal,
         fechaInicio ? fechaInicio.toISOString() : fechaInicio,
-        fechaFin ? fechaFin.toISOString() : fechaFin
+        fechaFin ? fechaFin.toISOString() : fechaFin,
+        this.pageSize,
+        this.page
       )
       .subscribe((ventas) => {
         this.dataSource = ventas;

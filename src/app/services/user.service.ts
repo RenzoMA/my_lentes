@@ -3,6 +3,9 @@ import { HttpClient } from "@angular/common/http";
 import { APP_CONFIG } from "../app.config";
 import { User } from "../models/user.model";
 import { UserEdit } from "../models/user-edit.model";
+import { pluck } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Cliente } from '../models/cliente.model';
 
 @Injectable({
   providedIn: "root",
@@ -23,9 +26,14 @@ export class UserService {
     return this.httpClient.get<UserEdit>(url);
   }
 
-  getUsuarioParams(nombre: string, documento: string) {
-    const url = `${this.config.api}/User/GetUsuarioByParams?nombre=${nombre}&nuDocumento=${documento}`;
-    return this.httpClient.get<User[]>(url);
+  getUsuarioParams(
+    nombre: string,
+    documento: string,
+    pageNumber: number,
+    pageSize: number
+  ) {
+    const url = `${this.config.api}/User/GetUsuarioByParams?nombre=${nombre}&nuDocumento=${documento}&PageNumber=${pageNumber}&PageSize=${pageSize}`;
+    return this.httpClient.get(url).pipe(pluck("data")) as Observable<User[]>;
   }
 
   delete(userId: number) {

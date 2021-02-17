@@ -5,6 +5,8 @@ import { APP_CONFIG } from "../app.config";
 import { Cliente } from "../models/cliente.model";
 import { Producto, ProductoDetalle } from "../models/producto.model";
 import { TipoProducto } from "../models/tipo-producto.model";
+import { pluck } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: "root",
@@ -18,9 +20,15 @@ export class ProductoService {
     const url = `${this.config.api}/Producto/GetProducto`;
     return this.httpClient.get<Producto[]>(url);
   }
-  getProductos(code: string) {
-    const url = `${this.config.api}/Producto/GetProductoByParams?parametros=${code}`;
-    return this.httpClient.get<Producto[]>(url);
+  getProductos(
+    code: string,
+    descripcion: string,
+    PageNumber: number,
+    pageSize: number,
+    tipo: number
+  ) {
+    const url = `${this.config.api}/Producto/GetProductoByParams?PageNumber=${PageNumber}&PageSize=${pageSize}&codigo=${code}&descripcion=${descripcion}&tipo=${tipo}`;
+    return this.httpClient.get(url).pipe(pluck("data")) as Observable<Producto[]>;;
   }
 
   getProductoDetalle(code: number) {

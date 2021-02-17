@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { UserService } from "../../../services/user.service";
 import { User } from "../../../models/user.model";
 import { FormControl } from "@angular/forms";
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: "app-main",
@@ -23,18 +24,31 @@ export class MainComponent implements OnInit {
   dataSource: User[] = [];
   nombre = new FormControl("");
   documento = new FormControl("");
+  page = 1;
+  pageSize = 10;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private usuarioService: UserService
   ) {}
 
+  pageChange(event: PageEvent) {
+    this.page = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.loadUsers();
+  }
+
   ngOnInit(): void {
     this.loadUsers();
   }
   loadUsers() {
     this.usuarioService
-      .getUsuarioParams(this.nombre.value, this.documento.value)
+      .getUsuarioParams(
+        this.nombre.value,
+        this.documento.value,
+        this.page,
+        this.pageSize
+      )
       .subscribe((items) => {
         this.dataSource = items;
       });

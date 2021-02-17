@@ -4,22 +4,7 @@ import { ProductoService } from "../../../services/producto.service";
 import { Producto } from "../../../models/producto.model";
 import { FormControl } from "@angular/forms";
 import { TipoProducto } from "../../../models/tipo-producto.model";
-
-// export interface Producto {
-//   codigo: string;
-//   descripcion: string;
-//   tipo: string;
-//   marca: string;
-//   stock: number;
-// }
-
-// const ELEMENT_DATA: Producto[] = [
-//   { codigo: "1", descripcion: "test", marca: "test", stock: 10, tipo: "test" },
-//   { codigo: "2", descripcion: "test", marca: "test", stock: 10, tipo: "test" },
-//   { codigo: "3", descripcion: "test", marca: "test", stock: 10, tipo: "test" },
-//   { codigo: "4", descripcion: "test", marca: "test", stock: 10, tipo: "test" },
-//   { codigo: "5", descripcion: "test", marca: "test", stock: 10, tipo: "test" },
-// ];
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: "app-main",
@@ -27,6 +12,8 @@ import { TipoProducto } from "../../../models/tipo-producto.model";
   styleUrls: ["./main.component.scss"],
 })
 export class MainComponent implements OnInit {
+  page: number = 1;
+  pageSize: number = 10;
   selectedId = 0;
   displayedColumns: string[] = [
     "codigo",
@@ -56,15 +43,28 @@ export class MainComponent implements OnInit {
   }
 
   loadProducto() {
-    const producto = this.codigo.value;
+    const codigo = this.codigo.value;
     const descripcion = this.descripcion.value;
     const tipo = this.tipo.value;
     this.productoService
-      .getProductos(tipo + descripcion + producto)
+      .getProductos(
+        codigo,
+        descripcion,
+        this.page,
+        this.pageSize,
+        tipo
+      )
       .subscribe((productos) => {
         this.dataSource = productos;
       });
   }
+
+  pageChange(event: PageEvent) {
+    this.page = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.loadProducto();
+  }
+
   deleteProduct() {
     this.productoService.delete(this.selectedId).subscribe(() => {
       this.loadProducto();

@@ -2,6 +2,8 @@ import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { APP_CONFIG } from "../app.config";
 import { Venta } from "../models/venta.model";
+import { pluck } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 export interface EntityVentaInsertUpdate {
   iD_CLIENTE: number;
@@ -41,10 +43,12 @@ export class VentaService {
     documento: string,
     canal: string,
     inicio: Date,
-    fin: Date
+    fin: Date,
+    pageSize: number,
+    pageNumber: number
   ) {
-    const url = `${this.config.api}/Venta/GetVentaByParams?estado=${estado}&nombre=${nombre}&nuDocumento=${documento}&idCanal=${canal}&fechaDesdeVenta=${inicio}&fechaHastaVenta=${fin}`;
-    return this.httpClient.get<Venta[]>(url);
+    const url = `${this.config.api}/Venta/GetVentaByParams?estado=${estado}&nombre=${nombre}&nuDocumento=${documento}&idCanal=${canal}&fechaDesdeVenta=${inicio}&fechaHastaVenta=${fin}&PageNumber=${pageNumber}&PageSize=${pageSize}`;
+    return this.httpClient.get(url).pipe(pluck("data")) as Observable<Venta[]>;;
   }
   getVentas() {
     const url = `${this.config.api}/Venta/GetVenta`;

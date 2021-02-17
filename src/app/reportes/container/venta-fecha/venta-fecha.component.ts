@@ -34,7 +34,9 @@ export class VentaFechaComponent implements OnInit {
         "",
         "",
         this.inicio.value.toISOString(),
-        this.fin.value.toISOString()
+        this.fin.value.toISOString(),
+        10000000,
+        1
       )
       .subscribe((results) => {
         this.data = results.reduce((current, next) => {

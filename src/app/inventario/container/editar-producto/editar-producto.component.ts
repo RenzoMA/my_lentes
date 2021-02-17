@@ -7,6 +7,7 @@ import { ProductoService } from "../../../services/producto.service";
 import { UploadImageService } from "../../../services/uploadImage.service";
 import { MarcaService } from "../../../services/marca.service";
 import { ActivatedRoute } from "@angular/router";
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: "app-editar-producto",
@@ -16,6 +17,7 @@ import { ActivatedRoute } from "@angular/router";
 export class EditarProductoComponent implements OnInit {
   tipoProducto: TipoProducto[] = [];
   marcas: Marca[] = [];
+
   editarGroup = new FormGroup({
     codigo: new FormControl(""),
     codigoFabrica: new FormControl(""),
