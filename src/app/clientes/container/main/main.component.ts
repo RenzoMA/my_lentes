@@ -40,9 +40,9 @@ export class MainComponent implements OnInit {
   }
 
   borrar() {
-    this.nombre.reset();
-    this.documento.reset();
-    this.estado.reset();
+    this.nombre.reset("");
+    this.documento.reset("");
+    this.estado.reset("");
   }
   pageChange(event: PageEvent) {
     this.page = event.pageIndex + 1;
