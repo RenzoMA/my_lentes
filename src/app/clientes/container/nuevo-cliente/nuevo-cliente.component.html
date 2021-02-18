@@ -11,8 +11,8 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Telefono</mat-label>
-        <input type="text" matInput formControlName="telefono" />
+        <mat-label>Doc Identidad</mat-label>
+        <input type="text" matInput formControlName="documento" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Nombre</mat-label>
@@ -23,8 +23,8 @@
         <input type="text" matInput formControlName="apellido" />
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Doc Identidad</mat-label>
-        <input type="text" matInput formControlName="documento" />
+        <mat-label>Telefono</mat-label>
+        <input type="text" matInput formControlName="telefono" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Correo</mat-label>
@@ -89,7 +89,12 @@
     <button mat-raised-button color="warn" (click)="borrar()">
       <mat-icon>delete</mat-icon>Borrar
     </button>
-    <button mat-raised-button color="primary" [disabled]="isInvalid()" (click)="save()">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="isInvalid()"
+      (click)="save()"
+    >
       <mat-icon>save</mat-icon>Guardar
     </button>
   </div>
