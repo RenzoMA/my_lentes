@@ -6,6 +6,7 @@ import { Marca } from "../../../models/marca.model";
 import { Canal } from "../../../models/canal.model";
 import { FormControl, Validators } from "@angular/forms";
 import { VentaService } from "../../../services/venta.service";
+import { Venta } from "../../../models/venta.model";
 @Component({
   selector: "app-venta-marca",
   templateUrl: "./venta-marca.component.html",
@@ -16,6 +17,9 @@ export class VentaMarcaComponent implements OnInit {
   canales: Canal[] = [];
   marca = new FormControl("", [Validators.required]);
   canal = new FormControl("", [Validators.required]);
+
+  displayedColumns: string[] = ["codigo", "marca", "canal", "total"];
+  dataSource: Venta[] = [];
   constructor(
     private location: Location,
     private marcaService: MarcaService,
@@ -42,7 +46,7 @@ export class VentaMarcaComponent implements OnInit {
     this.ventaService
       .getVentaMarcaCanal(this.marca.value, this.canal.value)
       .subscribe((results) => {
-        console.log(results);
+        this.dataSource = results;
       });
   }
 }
