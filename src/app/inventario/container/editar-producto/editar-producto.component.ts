@@ -62,8 +62,8 @@ export class EditarProductoComponent implements OnInit {
         descripcion: new FormControl(producto.prO_DESCRIPCION, [
           Validators.required,
         ]),
-        tipo: new FormControl(producto.iD_TIPO_PRODUCTO, [Validators.required]),
-        marca: new FormControl(producto.iD_MARCA, [Validators.required]),
+        tipo: new FormControl(producto.iD_TIPO_PRODUCTO, [Validators.required, Validators.min(1)]),
+        marca: new FormControl(producto.iD_MARCA, [Validators.required, Validators.min(1)]),
         enlaceRRSS2: new FormControl(producto.prO_ENLACE_RRSS2, [
           Validators.required,
         ]),

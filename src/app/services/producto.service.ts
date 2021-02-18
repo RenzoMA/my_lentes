@@ -73,7 +73,7 @@ export class ProductoService {
     stock: number,
     imagen: string
   ) {
-    const url = `${this.config.api}/Producto/PutProducto?ID_PRODUCTO=${codigoProducto}&ID_TIPO_PRODUCTO=${tipoProducto}&ID_MARCA=${idMarca}&PRO_CODIGO_FABRICA=${codigoFabrica}&PRO_CODIGO_SUNAT=${codigoSunat}&PRO_DESCRIPCION=${descripcion}&PRO_ENLACE_RRSS1=${enlaceRRSS1}&PRO_ENLACE_RRSS2=${enlaceRRSS2}&PRO_PRECIO=${precio}&PRO_STOCK=${stock}&PRO_IMAGEN=${imagen}`;
+    const url = `${this.config.api}/Producto/PutProducto?ID_PRODUCTO=${codigoProducto}&ID_TIPO_PRODUCTO=${tipoProducto}&ID_MARCA=${idMarca}&PRO_CODIGO_FABRICA=${codigoFabrica}&PRO_CODIGO_SUNAT=${codigoSunat}&PRO_DESCRIPCION=${descripcion}&PRO_ENLACE_RRSS1=${enlaceRRSS1}&PRO_ENLACE_RRSS2=${enlaceRRSS2}&PRO_PRECIO=${precio}&PRO_STOCK=${stock}&PRO_IMAGEN=${imagen}&ID_UNIDAD_VENTA=1`;
     return this.httpClient.put(url, {});
   }
 }
