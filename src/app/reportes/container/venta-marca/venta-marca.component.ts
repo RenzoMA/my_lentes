@@ -35,7 +35,10 @@ export class VentaMarcaComponent implements OnInit {
       this.canales = items;
     });
   }
-
+  borrar() {
+    this.marca.reset('');
+    this.canal.reset('');
+  }
   cancel(event: MouseEvent) {
     this.location.back();
   }
