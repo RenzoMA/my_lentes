@@ -28,7 +28,7 @@ export class ProductoService {
     tipo: number
   ) {
     const url = `${this.config.api}/Producto/GetProductoByParams?PageNumber=${PageNumber}&PageSize=${pageSize}&codigo=${code}&descripcion=${descripcion}&tipo=${tipo}`;
-    return this.httpClient.get(url).pipe(pluck("data")) as Observable<Producto[]>;;
+    return this.httpClient.get(url).pipe(pluck("data")) as Observable<Producto[]>;
   }
 
   getProductoDetalle(code: number) {

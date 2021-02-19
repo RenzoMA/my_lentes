@@ -5,4 +5,5 @@ export interface Cliente {
   categoria: string;
   canal: string;
   estado: string;
+  numDoc: string;
 }

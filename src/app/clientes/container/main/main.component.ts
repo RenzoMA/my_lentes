@@ -15,6 +15,7 @@ export class MainComponent implements OnInit {
   displayedColumns: string[] = [
     "codigo",
     "nombre",
+    "numDoc",
     "tipo",
     "categoria",
     "canal",

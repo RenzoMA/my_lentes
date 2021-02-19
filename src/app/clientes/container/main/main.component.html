@@ -60,6 +60,11 @@
       <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="numDoc">
+      <th mat-header-cell *matHeaderCellDef>Documento</th>
+      <td mat-cell *matCellDef="let element">{{ element.numDoc }}</td>
+    </ng-container>
+
     <ng-container matColumnDef="tipo">
       <th mat-header-cell *matHeaderCellDef>Tipo de cliente</th>
       <td mat-cell *matCellDef="let element">{{ element.tipo }}</td>

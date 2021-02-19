@@ -18,6 +18,7 @@ export class MainComponent implements OnInit {
   displayedColumns: string[] = [
     "codigo",
     "descripcion",
+    "precio",
     "tipo",
     "marca",
     "stock",
