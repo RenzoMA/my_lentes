@@ -17,6 +17,9 @@
       </button>
     </div>
   </div>
+  <div *ngIf="!isLoggedIn" class="login-wrapper">
+    <a routerLink="/auth">Login</a>
+  </div>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="cerrarSession.emit()">Cerrar Sesión</button>
   </mat-menu>
